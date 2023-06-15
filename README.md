@@ -54,3 +54,15 @@ main_promptに記載する内容をChatGPTなどを通して、具体的な要�
 `example/main_prompt` に記載してある例は、以下のやり取りを通して作成されたものです。
 
 https://chat.openai.com/share/db2c856b-3ace-4000-b73f-12d4730def83
+
+実行方法
+
+```sh
+python main.py example
+```
+
+作成後のアプリ確認
+
+```sh
+python example/main.py
+```
