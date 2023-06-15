@@ -1,52 +1,56 @@
-# GPT Engineer
-**Specify what you want it to build, the AI asks for clarification, and then builds it.**
+# GPTエンジニア（日本語訳）
 
-GPT Engineer is made to be easy to adapt, extend, and make your agent learn how you want your code to look. It generates an entire codebase based on a prompt. 
+本家：https://github.com/AntonOsika/gpt-engineer
 
+**作成したいものを指定して、AIが明確化のために質問し、それを作成します。**
 
-## Project philosophy
-- Simple to get value
-- Flexible and easy to add new own "AI steps". See `steps.py`.
-- Incrementally build towards a user experience of:
-  1. high level prompting
-  2. giving feedback to the AI that it will remember over time
-- Fast handovers back and forth between AI and human
-- Simplicity, all computation is "resumable" and persisted to the filesystem
+GPTエンジニアは、簡単に適応させ、拡張し、エージェントがどのようにコードを表示させたいかを学ぶように作られています。それはプロンプトに基づいてコードベース全体を生成します。
 
+## プロジェクトの哲学
+- 価値を簡単に得られる
+- 自分で新しい "AIステップ" を追加するのが簡単で柔軟。`steps.py` を参照。
+- 次のユーザーエクスペリエンスに向けて徐々に構築する：
+  1. 高レベルのプロンプト
+  2. 時間の経過とともにAIが覚えてくれるフィードバックを与える
+- AIと人間の間で素早く引き継ぎができる
+- シンプルさ。全ての計算は "再開可能" で、ファイルシステムに保存される。
 
-## Usage
+## 使い方
 
-**Setup**:
+**セットアップ**:
 
 - `pip install -r requirements.txt`
-- `export OPENAI_API_KEY=[your api key]` with a key that has GPT4 access
+- GPT4アクセスがあるキーで `export OPENAI_API_KEY=[your api key]`
 
-**Run**:
-- Create a new empty folder with a `main_prompt` file (or copy the example folder `cp example -r my-new-project`)
-- Fill in the `main_prompt` in your new folder
-- run `python main.py my-new-project`
+**実行**:
+- `main_prompt` ファイルがある新しい空フォルダを作成する（または`example`フォルダをコピーして`cp example -r my-new-project`）
+- 新しいフォルダの `main_prompt` を記入する
+- `python main.py my-new-project` を実行する
 
-**Results**:
-- Check the generated files in my-new-project/workspace
+**結果**:
+- 生成されたファイルは my-new-project/workspace で確認できます
 
-### Limitations
-Implementing additional chain of thought prompting, e.g. [Reflexion](https://github.com/noahshinn024/reflexion), should be able to make it more reliable and not miss requested functionality in the main prompt.
+### 制約
+追加の連鎖思考プロンプトを実装することで、例えば [Reflexion](https://github.com/noahshinn024/reflexion) を使用することで、メインプロンプトでリクエストされた機能を見逃さないように、より信頼性を高めることができます。
 
-Contributors welcome! If you are unsure what to add, check out the ideas listed in the Projects tab in the GitHub repo.
-
-
-## Features
-You can specify the "identity" of the AI agent by editing the files in the `identity` folder.
-
-Editing the identity, and evolving the main_prompt, is currently how you make the agent remember things between projects.
-
-Each step in steps.py will have its communication history with GPT4 stored in the logs folder, and can be rerun with scripts/rerun_edited_message_logs.py.
+コントリビューター大歓迎！ 何を追加すればよいかわからない場合は、GitHubリポジトリのProjectsタブにあるアイデアをご覧ください。
 
 
-## Demo
+## 機能
+AIエージェントの "アイデンティティ" を `identity` フォルダ内のファイルを編集することで指定できます。
 
+アイデンティティを編集し、main_promptを進化させることで、現在はプロジェクト間でエージェントが物事を覚える方法です。
 
+steps.py の各ステップは、GPT4との通信履歴がlogsフォルダに保存され、scripts/rerun_edited_message_logs.pyで再実行できます。
+
+## デモ
 
 https://github.com/AntonOsika/gpt-engineer/assets/4467025/6e362e45-4a94-4b0d-973d-393a31d92d9b
 
 
+h-k-nyosuによる追記：
+
+main_promptに記載する内容をChatGPTなどを通して、具体的な要件定義まで落とし込むと精度が上がります。
+`example/main_prompt` に記載してある例は、以下のやり取りを通して作成されたものです。
+
+https://chat.openai.com/share/db2c856b-3ace-4000-b73f-12d4730def83
